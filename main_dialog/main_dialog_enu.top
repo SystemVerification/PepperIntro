@@ -1,0 +1,10 @@
+topic: ~main_dialog()
+language: enu
+
+u: (Follow me {Pepper})
+    OK, let's go ^switchFocus(intro_project/follow_me)
+    
+u: (Start the show {Pepper})
+    \style=joyful\ \vol=80\ Let's start the show! 
+    ^switchFocus(intro_project/waiting_for_the_boss)
+    

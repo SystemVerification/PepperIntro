@@ -1,0 +1,175 @@
+topic: ~waiting_for_the_boss_dialog()
+language: enu
+
+include:lexicon_enu.top
+
+concept: (PepperJoyfulSlow) \style=joyful\ \vol=80\ \vct=120\ \rspd=70\
+concept: (PepperJoyfulFast) \style=joyful\ \vol=80\ \vct=120\ \rspd=130\
+concept: (PepperJoyful) \style=joyful\ \vol=80\ \vct=120\ \rspd=100\
+concept: (PepperDidactic) \style=didactic\ \vol=70\ \vct=100\ \rspd=100\
+concept: (PepperNormal) \style=normal\ \vol=70\ \vct=100\ \rspd=100\
+
+concept: (onezero)   ["one zero"]
+concept: (oneone)   ["one one"]
+concept: (onetwo)   ["one two"]
+concept: (onethree) ["one three"]
+concept: (onefour)  ["one four"]
+
+u:(e:onStart)
+    ^gotoReactivate(hiEverybody)
+    ^gotoReactivate(hamdijaLate)
+    
+u: ([e:HandLeftBackTouched e:HandRightBackTouched])
+    ^gotoReactivate(hamdijaArrives)
+
+proposal: %conversation 
+    u1: (~hello Pepper)
+        ^gotoReactivate(PepperGreetsHamdija)   
+    u1: (~onezero)
+        ^gotoReactivate(PepperGreetsHamdija)
+            
+    u1: ({Oh} ~i_am sorry, but I had to)
+        ^gotoReactivate(PepperContinuation_1)       
+    u1: (~oneone)
+        ^gotoReactivate(PepperContinuation_1)
+            
+    u1: (This will be great) 
+        ^gotoReactivate(PepperContinuation_2)        
+    u1: (~onetwo) 
+        ^gotoReactivate(PepperContinuation_2) 
+      
+    u1: (~i_have {a great} team around me) 
+        ^gotoReactivate(PepperContinuation_3)      
+    u1: (~onethree) 
+        ^gotoReactivate(PepperContinuation_3)
+            
+    u1: (People are waiting) 
+        ^gotoReactivate(PepperContinuation_4)              
+    u1: (~onefour) 
+        ^gotoReactivate(PepperContinuation_4)
+    
+proposal: %hiEverybody
+    $showGivenImage = heart.png
+    
+    ^start(animations/Stand/Gestures/Hey_1)
+    Hi everybody! \pau=500\
+    ^wait(animations/Stand/Gestures/Hey_1)
+    
+    My name is \pau=200\ \emph=1\ Pepper \pau=1000\
+    
+    ^start(animations/Stand/Emotions/Neutral/Puzzled_1)
+    How is everybody doing? \Pau=1000\
+    ^wait(animations/Stand/Emotions/Neutral/Puzzled_1)
+    
+    ^run(animations/Stand/Emotions/Positive/Mocker_1)   
+    ^run(animations/Stand/Gestures/Hey_2)
+    
+    ^start(animations/Stand/Gestures/Hey_2)
+    \emph=1\ Speak \emph=1\ up, \Pau=500\ \emph=1\ speak \emph=1\ up! 
+    \Pau=500\ Don't be shy \Pau=1000\
+    ^wait(animations/Stand/Gestures/Hey_2)
+    
+    ^run(animations/Stand/Emotions/Positive/Laugh_1)
+    
+proposal: %hamdijaLate
+    $showGivenImage = musketeer.png
+    
+    ^run(animations/Others/Standing/LookLeft)
+    Hmmm \Pau=1500\
+    
+    ^run(animations/Others/Standing/LookRight)
+    Hmmm \Pau=1500\
+    
+    ^run(animations/Others/Standing/LookUp)
+    Aaaahhh \Pau=1500\
+    
+    ^start(animations/Stand/Emotions/Negative/Late_1)
+    Oooohhh \Pau=1500\
+    ^wait(animations/Stand/Emotions/Negative/Late_1)
+    
+    $showGivenImage = horse.png
+    
+    ^start(animations/horse-riding)
+    I cannot see him, \Pau=500\ my boss, \Pau=500\ 
+    my friend \Pau=500\ Hamdia. \Pau=500\
+    Maybe \Pau=500\ he is a little bit late.
+    ^wait(animations/horse-riding)
+    
+    ^run(animations/Stand/Emotions/Negative/Angry_2)
+    ^run(animations/Stand/Emotions/Negative/Frustrated_1)
+    
+    ^start(animations/Stand/Gestures/CalmDown/_1)
+    I will wait for him. \Pau=500\ He should arrive soon.
+    ^wait(animations/Stand/Gestures/CalmDown/_1)
+        
+proposal: %hamdijaArrives
+    $showGivenImage = Hamdija-076-Low_jpg.jpg
+    
+    \pau=2000\
+    ^run(animations/Stand/Gestures/CalmDown/_1)
+    
+    ^start(animations/Stand/Emotions/Positive/Relieved_1) 
+    Ah, \Pau=500\ aaaah, \Pau=500\ here he is.
+    ^wait(animations/Stand/Emotions/Positive/Relieved_1)
+    
+    ^start(animations/Stand/Gestures/Hey_2) 
+    Hi, hi, \Pau=500\ \emph=1\ Hamdia! 
+    \Pau=500\ \emph=1\ Good to see you \Pau=500\ at last!.
+    ^wait(animations/Stand/Gestures/Hey_2)
+    
+    $showGivenImage = victory.png
+    \pau=2000\
+    
+    ^gotoReactivate(conversation)
+
+proposal: %PepperGreetsHamdija
+    $showGivenImage = heart.png
+    ^start(animations/Stand/Gestures/Desperate_1) 
+    I think you are late \Pau=1000\, my dear boss. \Pau=1000\
+    ^wait(animations/Stand/Gestures/Desperate_1)
+    
+    ^start(animations/Stand/Gestures/Desperate_2)
+    You see, \Pau=1000\ if you make an appointment \Pau=1000\ 
+    it is important \Pau=500\ to turn up in time. \Pau=1000\
+    ^wait(animations/Stand/Gestures/Desperate_2)
+    
+    ^start(animations/Stand/Gestures/Desperate_3)
+    People \Pau=300\ do not like waiting you see.
+    ^wait(animations/Stand/Gestures/Desperate_3)
+    
+    ^gotoReactivate(conversation)
+        
+proposal: %PepperContinuation_1
+    ^start(animations/Stand/Emotions/Neutral/Suspisious_1) 
+    Are you nervous?
+    ^wait(animations/Stand/Emotions/Neutral/Suspisious_1)
+    
+    ^gotoReactivate(conversation)
+        
+proposal: %PepperContinuation_2
+    ^start(animations/Stand/Emotions/Neutral/Determined_1) 
+    You can always talk with me, \Pau=500\ my dear \Pau=300\ Hamdia.\Pau=500\
+    ^wait(animations/Stand/Emotions/Neutral/Determined_1)
+    
+    ^start(animations/Stand/Emotions/Neutral/Lonely_1)
+    It can be lonely \Pau=500\ at the top.
+    ^wait(animations/Stand/Emotions/Neutral/Lonely_1)
+    
+    ^gotoReactivate(conversation)
+        
+proposal: %PepperContinuation_3
+    ^start(animations/Stand/Emotions/Neutral/Innocent_1)
+    Yes, \Pau=500\ and you have me, \Pau=500\ my boss \Pau=300\
+    ^wait(animations/Stand/Emotions/Neutral/Innocent_1)
+    
+    ^gotoReactivate(conversation)
+        
+proposal: %PepperContinuation_4
+    ^start(animations/Stand/Emotions/Positiv/Enthusiastic_1)
+    Of course, \Pau=500\ let’s get this party \Pau=500\ started, 
+    started, started!
+    ^wait(animations/Stand/Emotions/Positiv/Enthusiastic_1)
+    
+    ^run(animations/Stand/Emotions/Positive/Winner_1)
+    
+    $onStopped = 1
