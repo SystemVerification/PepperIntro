@@ -18,6 +18,7 @@
         <File name="horse" src="html/horse.png" />
         <File name="victory" src="html/victory.png" />
         <File name="musketeer" src="html/musketeer.png" />
+        <File name="Readme" src="Readme.md" />
     </Resources>
     <Topics>
         <Topic name="main_dialog_enu" src="main_dialog/main_dialog_enu.top" topicName="main_dialog" language="en_US" />

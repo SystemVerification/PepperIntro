@@ -12,9 +12,6 @@
  <contents>
   <behaviorContent path="follow_me">
    <nature>interactive</nature>
-   <triggerSentences/>
-   <loadingResponses/>
-   <autonomous/>
    <permissions/>
   </behaviorContent>
   <behaviorContent path="main_behavior">
@@ -23,12 +20,9 @@
   </behaviorContent>
   <behaviorContent path="waiting_for_the_boss">
    <nature>interactive</nature>
-   <triggerSentences/>
-   <loadingResponses/>
-   <autonomous/>
    <permissions/>
   </behaviorContent>
-  <dialogContent topicName="main_dialog" typeVersion="1.0">
+  <dialogContent typeVersion="1.0" topicName="main_dialog">
    <topic language="en_US" path="main_dialog/main_dialog_enu.top"/>
   </dialogContent>
  </contents>
